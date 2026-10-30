@@ -1,2 +1,12 @@
 Dependencias: Numpy, Random y deque
-La idea general del proyecto es desarrollar un algoritmo de generación de mapas dinámicos y algoritmos de búsqueda para poder crear un sistema de búsqueda de caminos automático en el lenguaje Python. Investigación esencial
+La idea general del proyecto es desarrollar un algoritmo de generación de mapas dinámicos y algoritmos de búsqueda para poder crear un sistema de búsqueda de caminos automático en el lenguaje Python. Investigación esencial:
+Generación de mapas:
+Utilizaremos el algoritmo random walk que funcionará como un generador aleatorio que “tira dados” una cantidad de veces determinada por el parámetro de complexity (si el valor de complexity es 0, entonces lo hará 1 o 2 veces; pero si es 100 o 150, lo hará muchas más veces y se generará un mapa mucho más complejo). Como su nombre lo indica, el camino que seguirá es aleatorio —> si sale 1, entonces irá hacia norte, si sale 2 irá hacia sur, si sale 3 ira al este, si sale 4 irá al oeste y si sale 5 dejará un espacio de 1 o 2 (a determinar durante el desarrollo).  
+
+Las cosas determinadas en todos los mapas es que S (spawpoint) y E (endpoint) solo estarán en las esquinas de la matriz 20x20 ((0,0), (19, 19), etc…), y tendrán un área de 2x2 o 3x3 alrededor suya (a determinar durante el desarrollo las dimensiones del área) para tener una zona segura y facilitar que la mayoría de mapas tengan solución. Si el mapa no tiene solución no es un problema ni algo que querámos evitar todo el tiempo, es simplemente una circunstancia que puede ocurrir (similar a un absurdo en matemática). Pero lo ideal es que la mayoría de mapas generados tengan solución y de esa forma que sea más interesante de analizar. El hecho de que el algoritmo pueda determinar si tiene o no solución es una buena señal ya que implica la capacidad de no buscar infinitamente el endpoint. 
+
+La dimensión elegida para la matriz madre (20x20) es porque es lo suficiente como para poder probar que el proyecto funciona correctamente, y además es lo suficientemente grande como para poder generar mapas complejos y diferentes todo el tiempo. Mientras que la aparición dinámica de S y E solo en las esquinas es porque si fuera totalmente aleatorio lo más probable es que la gran mayoría de todos los mapas no tengan solución, o a veces la solución sea casi instantánea (que S esté muy cerca de E). Además, es más entretenido e interesante de analizar si van de una punta a otra (el camino hacia el endpoint siempre es el más largo posible en la matriz, ya que es en diagonal hasta la otra punta).
+
+Algoritmos de búsqueda:
+Vamos a implementar principalmente los algoritmos BFS y DFS para tener un contraste entre ambos y poder compararlos (además para que haya variedad en el proyecto). 
+
